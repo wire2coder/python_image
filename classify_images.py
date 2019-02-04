@@ -99,5 +99,5 @@ def classify_images(images_dir, results_dic, model):
         else:
             results_dic[key].extend( (model_label, 0) )
     
-    # print(results_dic)
+    print("results_dic >> {}".format(results_dic))
     # end of function

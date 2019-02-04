@@ -88,19 +88,37 @@ def adjust_results4_isadog(results_dic, dogfile):
             line = line.strip() # removing the "new line character" with strip()
             if line not in dognames_dict:
                 dognames_dict[line] = 1
-            
+            else:
+                print("same dogs", line)
+                
             # Reads in next line in file to be processed with while loop
             # if this line isn't empty (EOF)
             line = infile.readline()
-    
-#         for i in results_dic:
-#             print( "lkjsdflkjdsfj: {}".format( results_dic[i][1] ) )
-            # 'Great_pyrenees_05435.jpg': ['great pyrenees'], 'Cocker_spaniel_03750.jpg': ['cocker spaniel']
-#             if results_dic[i][0] in dognames_dict:
-#                 if results_dic[i][1] in dognames_dict:
-#                     results_dic[i].extend((1,1))
-#                 else:
-#                     results_dic[i].extend((1,0))
-                
+       
+        for key in results_dic: # key >> skunk_029.jpg
+            print("results_dic[key][0] >> {}".format(results_dic[key][0]))
+            print("results_dic[key][1] >> {}".format(results_dic[key][1]))
             
-    None
+            # Pet Image Label IS of Dog (e.g. found in dognames_dic)
+            if results_dic[key][0] in dognames_dict:
+                
+                # Classifier Label IS image of Dog (e.g. found in dognames_dic)
+                # appends (1, 1) because both labels are dogs
+                if results_dic[key][1] in dognames_dict:
+                    results_dic[key].extend((1,1))
+                    
+                # TODO: 4c. REPLACE pass BELOW with CODE that adds the following to
+                #           results_dic dictionary for the key indicated by the 
+                #           variable key - append (1,0) to the value using 
+                #           the extend list function. This indicates
+                #           the pet label is-a-dog, classifier label is-NOT-a-dog. 
+                #                              
+                # Classifier Label IS NOT image of dog (e.g. NOT in dognames_dic)
+                # appends (1,0) because only pet label is a dog
+                else:
+                    HERE 2/4
+
+            
+            
+#     print("dognames_dict >>> {}".format(dognames_dict))
+    # end of function
