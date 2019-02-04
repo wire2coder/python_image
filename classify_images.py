@@ -65,30 +65,39 @@ def classify_images(images_dir, results_dic, model):
      Returns:
            None - results_dic is mutable data type so no return needed.         
     """    
-        
-    filenames = ["Beagle_01141.jpg", "Beagle_01125.jpg", "skunk_029.jpg" ]
-    pet_labels = ["beagle"
-                  , "beagle"
-                  , "skunk"]
-    classifier_labels = ["walker hound, walker foxhound"
-                         , "beagle"
-                         , "skunk, polecat, wood pussy"]
-    
-    pet_label_is_dog = [1, 1, 0]
-    classifier_label_is_dog = [1, 1, 0]         
-
+      
     # checking input parameters 
 #     print(">>> {}".format(images_dir)) # >>> pet_images/
 #     print(">>> {}".format(results_dic)) # { 'Great_pyrenees_05435.jpg': ['great pyrenees'], 'Cocker_spaniel_03750.jpg': ['cocker spaniel'] }
 #     print(">>> {}".format(model)) # >> vgg
     
+    
+#     test_image="pet_images/Collie_03797.jpg"
+#     model = "vgg"
+#     image_classification = classifier(test_image, model)
+    # Image: pet_images/Collie_03797.jpg using model: vgg was 
+    # classified as a: collie
+    
     # https://stackoverflow.com/questions/10377998/how-can-i-iterate-over-files-in-a-given-directory
     for key in results_dic:
-        print(">>> {}".format(key)) # >> German_shepherd_dog_04931.jpg
-        model_label = model
-        print(model_label)
-        
+        fullpath = images_dir + key
+#         print("fullpath>>> {}".format(fullpath)) # >> German_shepherd_dog_04931.jpg
+
+        # model_label is the classifier_label
+        model_label = classifier(fullpath, model) # >> cocker spaniel, English cocker spaniel, cocker
+        model_label = model_label.lower().strip()
+#         print(model_label)
+
+        # defines truth as pet image label
+#         truth = results_dic[key] # >> ['great pyrenees']
+        truth = results_dic[key][0] # >> great pyrenees 
+
+        if truth in model_label:
+            print("truth: {}, model_lable: {}".format(truth, model_label)) # >> truth: cocker spaniel, model_lable: cocker spaniel, english cocker spaniel, cocker
+           
+            results_dic[key].extend( (model_label, 1) )
+        else:
+            results_dic[key].extend( (model_label, 0) )
     
-    
+    # print(results_dic)
     # end of function
-    None 
