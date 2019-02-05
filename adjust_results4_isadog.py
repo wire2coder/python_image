@@ -130,3 +130,18 @@ def adjust_results4_isadog(results_dic, dogfile):
            
     print("dognames_dict >>> {}".format(dognames_dict))
     # end of function
+    
+    """
+    results_dic will have the following adjusted format:
+
+    key = pet image filename (ex: Beagle_01141.jpg)
+    value = List with:
+        index 0 = Pet Image Label (ex: beagle)
+        index 1 = Classifier Label (ex: english foxhound)
+        index 2 = 0/1 where 1 = labels match , 0 = labels don't match (ex: 0)
+        index 3 = 0/1 where 1= Pet Image Label is a dog, 0 = Pet Image Label isn't a dog (ex: 1)
+        index 4 = 0/1 where 1= Classifier Label is a dog, 0 = Classifier Label isn't a dog (ex: 1)
+    example_dictionary = {'Beagle_01141.jpg': ['beagle', 'walker hound, walker foxhound', 0, 1, 1]}
+    """
+    
+
