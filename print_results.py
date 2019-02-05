@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:
-# REVISED DATE: 
+# PROGRAMMER: Terry S
+# DATE CREATED: 2/5/2019
+# REVISED DATE: 2/5/2019
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
 #          should also allow the user to be able to print out cases of misclassified
@@ -61,6 +61,31 @@ def print_results(results_dic, results_stats_dic, model,
                               False doesn't print anything(default) (bool) 
     Returns:
            None - simply printing results.
-    """    
+    """ 
+    
+    # Prints summary statistics over the run
+     # Prints summary statistics over the run
+    print("\n\n*** Results Summary for CNN Model Architecture",model.upper(), "***")
+    print("{:20}: {:3d}".format('N Images', results_stats_dic['n_images']))
+    print("{:20}: {:3d}".format('N Dog Images', results_stats_dic['n_dogs_img']))
+    
+    # TODO: 6a
+    print("\n{:20}: {:3d}".format('N Not-Dog Images', results_stats_dic['n_notdogs_img'] ) )
+    
+    # Prints summary statistics (percentages) on Model Run
+    print(" ")
+    
+    """
+    results_stats_dic >> {'n_dogs_img': 30, 'n_match': 35, 'n_correct_dogs': 30, 'n_correct_notdogs': 0, 'n_correct_breed': 40, 'n_images': 40, 'n_notdogs_img': 10, 'pct_match': 87.5, 'pct_correct_dogs': 100.0, 'pct_correct_breed': 133.33333333333331, 'pct_correct_notdogs': 0.0}
+    """
+    
+    for key in results_stats_dic:
+        # TODO: 6b HERE
+        if "p" in results_stats_dic[key]:
+            print(key)
+            HERE 2/5
+        
+    
+    # end of the function
     None
                 
