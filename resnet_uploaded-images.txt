@@ -1,0 +1,99 @@
+ArgumentParser(prog='check_images.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+Argument 1: uploaded_images/
+Argument 2: resnet
+Argument 3: dognames.txt
+Command Line Arguments:
+     dir = uploaded_images/ 
+    arch = resnet 
+ dogfile = dognames.txt
+
+Pet Image Label Dictionary has 4 key-value pairs.
+Below are 4 of them:
+ 1 key:                     Dog_01.jpg  label:                        dog
+ 2 key:              Coffee_mug_01.jpg  label:                 coffee mug
+ 3 key:                    Bird_01.jpg  label:                       bird
+ 4 key:                     Dog_02.jpg  label:                        dog
+truth: coffee mug, model_lable: coffee mug
+results_dic >> {'Dog_01.jpg': ['dog', 'staffordshire bullterrier, staffordshire bull terrier', 0], 'Coffee_mug_01.jpg': ['coffee mug', 'coffee mug', 1], 'Bird_01.jpg': ['bird', 'pomeranian', 0], 'Dog_02.jpg': ['dog', 'american staffordshire terrier, staffordshire terrier, american pit bull terrier, pit bull terrier', 0]}
+
+     MATCH:
+
+             Coffee_mug_01.jpg: 
+Real:                 coffee mug   Classifier:                     coffee mug
+
+ NOT A MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: staffordshire bullterrier, staffordshire bull terrier
+
+                   Bird_01.jpg: 
+Real:                       bird   Classifier:                     pomeranian
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier: american staffordshire terrier, staffordshire terrier, american pit bull terrier, pit bull terrier
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+results_dic[key][0] >> dog
+results_dic[key][1] >> staffordshire bullterrier, staffordshire bull terrier
+results_dic[key][0] >> coffee mug
+results_dic[key][1] >> coffee mug
+results_dic[key][0] >> bird
+results_dic[key][1] >> pomeranian
+results_dic[key][0] >> dog
+results_dic[key][1] >> american staffordshire terrier, staffordshire terrier, american pit bull terrier, pit bull terrier
+results_dic >>> {'Dog_01.jpg': ['dog', 'staffordshire bullterrier, staffordshire bull terrier', 0, 1, 1], 'Coffee_mug_01.jpg': ['coffee mug', 'coffee mug', 1, 0, 0], 'Bird_01.jpg': ['bird', 'pomeranian', 0, 0, 1], 'Dog_02.jpg': ['dog', 'american staffordshire terrier, staffordshire terrier, american pit bull terrier, pit bull terrier', 0, 1, 1]}
+
+     MATCH:
+
+             Coffee_mug_01.jpg: 
+Real:                 coffee mug   Classifier:                     coffee mug  
+PetLabelDog: 0  ClassLabelDog: 0
+
+ NOT A MATCH:
+
+                    Dog_01.jpg: 
+Real:                        dog   Classifier: staffordshire bullterrier, staffordshire bull terrier  
+PetLabelDog: 1  ClassLabelDog: 1
+
+                   Bird_01.jpg: 
+Real:                       bird   Classifier:                     pomeranian  
+PetLabelDog: 0  ClassLabelDog: 1
+
+                    Dog_02.jpg: 
+Real:                        dog   Classifier: american staffordshire terrier, staffordshire terrier, american pit bull terrier, pit bull terrier  
+PetLabelDog: 1  ClassLabelDog: 1
+
+# Total Images 4 # Matches: 1 # NOT Matches: 3
+results_stats_dic >> {'n_dogs_img': 2, 'n_match': 1, 'n_correct_dogs': 2, 'n_correct_notdogs': 0, 'n_correct_breed': 4, 'n_images': 4, 'n_notdogs_img': 2, 'pct_match': 25.0, 'pct_correct_dogs': 100.0, 'pct_correct_breed': 200.0, 'pct_correct_notdogs': 0.0}
+
+ ** Statistics from calculates_results_stats() function:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog:   0.0  Pct Corr Breed: 200.0
+
+ ** Check Statistics - calculated from this function as a check:
+N Images:  4  N Dog Images:  2  N NotDog Images:  2 
+Pct Corr dog: 100.0 Pct Corr NOTdog:  50.0  Pct Corr Breed:   0.0
+
+
+*** Results Summary for CNN Model Architecture RESNET ***
+N Images            :   4
+N Dog Images        :   2
+
+N Not-Dog Images    :   2
+ 
+
+pct_match           : 25.00
+
+pct_correct_dogs    : 100.00
+
+pct_correct_breed   : 200.00
+
+pct_correct_notdogs : 0.00
+
+INCORRECT Dog/NOT Dog Assignments:
+
+INCORRECT Dog Breed Assignment:
+Real:                        dog   Classifier: staffordshire bullterrier, staffordshire bull terrier
+Real:                        dog   Classifier: american staffordshire terrier, staffordshire terrier, american pit bull terrier, pit bull terrier
+
+** Total Elapsed Runtime: 0:0:0
