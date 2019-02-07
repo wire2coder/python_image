@@ -31,11 +31,12 @@
 #           label isn't a dog.
 #
 ##
-# TODO 4: Define adjust_results4_isadog function below, specifically replace the None
-#       below by the function definition of the adjust_results4_isadog function. 
-#       Notice that this function doesn't return anything because the 
-#       results_dic dictionary that is passed into the function is a mutable 
-#       data type so no return is needed.
+# TODO 4: EDIT and ADD code BELOW to do the following that's stated in the
+#       comments below that start with "TODO: 4" for the adjust_results4_isadog
+#       function. Specifically EDIT and ADD code to define the
+#       adjust_results4_isadog function. Notice that this function doesn't return
+#       anything because the results_dic dictionary that is passed into the
+#       function is a mutable data type so no return is needed.
 # 
 def adjust_results4_isadog(results_dic, dogfile):
     """
@@ -44,8 +45,8 @@ def adjust_results4_isadog(results_dic, dogfile):
     Demonstrates if model architecture correctly classifies dog images even if
     it gets dog breed wrong (not a match).
     Parameters:
-      results_dic      - Dictionary with 'key' as image filename and 'value' as a 
-               List. Where the list will contain the following items: 
+      results_dic - Dictionary with 'key' as image filename and 'value' as a
+                    List. Where the list will contain the following items:
                   index 0 = pet image label (string)
                   index 1 = classifier label (string)
                   index 2 = 1/0 (int)  where 1 = match between pet image
@@ -56,8 +57,8 @@ def adjust_results4_isadog(results_dic, dogfile):
                  NEW - index 4 = 1/0 (int)  where 1 = Classifier classifies image 
                             'as-a' dog and 0 = Classifier classifies image  
                             'as-NOT-a' dog.
-     dogfile     - A text file that contains names of all dogs from the classifier
-           function and dog names from the pet image files. This file has 
+     dogfile - A text file that contains names of all dogs from the classifier
+               function and dog names from the pet image files. This file has
                one dog name per line dog names are all in lowercase with 
                spaces separating the distinct words of the dog name. Dog names
                from the classifier function can be a string of dog names separated
@@ -66,20 +67,20 @@ def adjust_results4_isadog(results_dic, dogfile):
                maltese) (string - indicates text file's filename)
     Returns:
            None - results_dic is mutable data type so no return needed.
-    """   
+    """
     # Creates dognames dictionary for quick matching to results_dic labels from
     # real answer & classifier's answer     
     dognames_dict = dict()
     
     # Reads in dognames from file, 1 name per line & automatically closes file
     with open(dogfile, "r") as infile:
-        # reads in dognames from first line in the file
+        # Reads in dognames from first line in file
         line = infile.readline()
-       
-        
+
         # Processes each line in file until reaching EOF (end-of-file) by
         # processing line and adding dognames to dognames_dic with while loop
         while line != "":
+
             # TODO: 4a. REPLACE pass with CODE to remove the newline character
             #           from the variable line
             #
@@ -94,8 +95,9 @@ def adjust_results4_isadog(results_dic, dogfile):
             # Reads in next line in file to be processed with while loop
             # if this line isn't empty (EOF)
             line = infile.readline()
-       
-        for key in results_dic: # key >> skunk_029.jpg
+
+    # submission 1 correction
+    for key in results_dic: # key >> skunk_029.jpg
             print("results_dic[key][0] >> {}".format(results_dic[key][0]))
             print("results_dic[key][1] >> {}".format(results_dic[key][1]))
             
@@ -127,8 +129,7 @@ def adjust_results4_isadog(results_dic, dogfile):
                 else:
                     results_dic[key].extend((0,0))
 
-           
-    print("results_dic >>> {}".format(results_dic))
+    # print("results_dic >>> {}".format(results_dic))
     # end of function
     
     """
